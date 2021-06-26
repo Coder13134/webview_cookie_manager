@@ -29,8 +29,9 @@ class WebviewCookieManager {
     }).then((results) => results == null
         ? <Cookie>[]
         : results.map((Map result) {
+          print(result['value']);
             final c = Cookie(result['name'] ?? '',
-                    removeInvalidCharacter(Uri.encodeComponent(result['value']) ?? ''))
+                    removeInvalidCharacter(result['value'] ?? ''))
                   // following values optionally work on iOS only
                   ..path = result['path']
                   ..domain = result['domain']
